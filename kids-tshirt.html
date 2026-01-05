@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store - Kids' T-Shirt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('images/background_index.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); 
+            z-index: 1;
+        }
+        header h1, header form {
+            position: relative;
+            z-index: 2;
+        }
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+        }
+        main {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .product-detail {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .product-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-info h2 {
+            margin-top: 0;
+        }
+        .product-info p {
+            margin: 1rem 0;
+        }
+        select, button {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Clothing Store</h1>
+        <form action="search.html" method="get" style="text-align: center; margin-top: 1rem;">
+            <input type="text" name="query" placeholder="Search for products..." style="padding: 0.5rem; width: 200px;" required>
+            <button type="submit" style="padding: 0.5rem 1rem; background-color: #333; color: white; border: none; cursor: pointer;">Search</button>
+        </form>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="kids.html">Kids</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="images/kids_tshirt.jpeg" alt="Kids' T-Shirt">
+            </div>
+            <div class="product-info">
+                <h2>Kids' T-Shirt</h2>
+                <p><strong>Description:</strong> Soft cotton t-shirt for kids. Made from gentle, breathable fabric perfect for playtime and everyday comfort. Available in fun colors and sizes for growing kids.</p>
+                <p><strong>Price:</strong> RM14.99</p>
+                <label for="size-detail">Size:</label>
+                <select id="size-detail">
+                    <option>S</option>
+                    <option>M</option>
+                    <option>L</option>
+                </select>
+                <br>
+                <button>Add to Cart</button>
+                <br>
+                <a href="kids.html" style="color: black;">Back to Kids' Clothing</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

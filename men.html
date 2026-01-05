@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store - Men</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('images/background_index.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); 
+            z-index: 1;
+        }
+        header h1, header form {
+            position: relative;
+            z-index: 2;
+        }
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+        }
+        main {
+            padding: 2rem;
+            text-align: center;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+        .product h3 {
+            margin: 0.5rem 0;
+            cursor: pointer;
+        }
+        .product p {
+            margin: 0.5rem 0;
+        }
+        select, button {
+            margin: 0.5rem;
+            padding: 0.5rem;
+        }
+        .product a {
+            color: black;
+            text-decoration: none;
+        }
+        .product a:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Clothing Store</h1>
+        <form action="search.html" method="get" style="text-align: center; margin-top: 1rem;">
+            <input type="text" name="query" placeholder="Search for products..." style="padding: 0.5rem; width: 200px;" required>
+            <button type="submit" style="padding: 0.5rem 1rem; background-color: #333; color: white; border: none; cursor: pointer;">Search</button>
+        </form>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="kids.html">Kids</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <h2>Men's Clothing</h2>
+            <div class="product-grid">
+                <div class="product">
+                    <a href="mens-tshirt.html"><img src="images/men_tshirt.jpg" alt="Men's T-Shirt"></a>
+                    <a href="mens-tshirt.html"><h3>Men's T-Shirt</h3></a>
+                    <p>Comfortable cotton t-shirt for daily wear</p>
+                    <p>Price: RM19.99</p>
+                    <label for="size-men1">Size:</label>
+                    <select id="size-men1">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <a href="mens-jeans.html"><img src="images/men_jeans.jpeg" alt="Men's Jeans"></a>
+                    <a href="mens-jeans.html"><h3>Men's Jeans</h3></a>
+                    <p>Classic baggy jeans for men to wear</p>
+                    <p>Price: RM39.99</p>
+                    <label for="size-men2">Size:</label>
+                    <select id="size-men2">
+                        <option>30</option>
+                        <option>32</option>
+                        <option>34</option>
+                        <option>36</option>
+                    </select>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <a href="mens-hoodie.html"><img src="images/men_hoodie.jpeg" alt="Men's Hoodie"></a>
+                    <a href="mens-hoodie.html"><h3>Men's Hoodie</h3></a>
+                    <p>Warm hoodie suitable for casual outings</p>
+                    <p>Price: RM69.99</p>
+                    <label for="size-men3">Size:</label>
+                    <select id="size-men3">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="product">
+                    <a href="mens-polo.html"><img src="images/men_polo.jpeg" alt="Men's Polo Shirt"></a>
+                    <a href="mens-polo.html"><h3>Men's Polo Shirt</h3></a>
+                    <p>Classic polo shirt for men</p>
+                    <p>Price: RM40.99</p>
+                    <label for="size-men4">Size:</label>
+                    <select id="size-men4">
+                        <option>S</option>
+                        <option>M</option>
+                        <option>L</option>
+                        <option>XL</option>
+                    </select>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

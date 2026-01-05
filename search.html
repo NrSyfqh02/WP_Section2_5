@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store - Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-image: url('images/background_index.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3); 
+            z-index: 1;
+        }
+        header h1, header form {
+            position: relative;
+            z-index: 2;
+        }
+        nav {
+            background-color: #444;
+            padding: 0.5rem;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+        }
+        main {
+            padding: 2rem;
+        }
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .product {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            text-align: center;
+        }
+        .product img {
+            max-width: 100%;
+            height: auto;
+        }
+        .product h3 {
+            margin: 0.5rem 0;
+            color: black; 
+        }
+        .product p {
+            margin: 0.5rem 0;
+            color: black; 
+        }
+        select, button {
+            margin: 0.5rem;
+            padding: 0.5rem;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .no-results {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Clothing Store</h1>
+        <form action="search.html" method="get" style="text-align: center; margin-top: 1rem;">
+            <input type="text" name="query" placeholder="Search for products..." style="padding: 0.5rem; width: 200px;" required>
+            <button type="submit" style="padding: 0.5rem 1rem; background-color: #333; color: white; border: none; cursor: pointer;">Search</button>
+        </form>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="men.html">Men</a></li>
+            <li><a href="women.html">Women</a></li>
+            <li><a href="kids.html">Kids</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Search Results</h2>
+        <div id="results"></div>
+    </main>
+    <script>
+        // Product data (expand this with all your products)
+        const products = [
+            {
+                id: 'mens-tshirt',
+                name: 'Men\'s T-Shirt',
+                description: 'Comfortable cotton t-shirt for daily wear',
+                price: 'RM19.99',
+                image: 'images/men_tshirt.jpg',
+                category: 'men',
+                sizes: ['S', 'M', 'L', 'XL']
+            },
+            {
+                id: 'mens-jeans',
+                name: 'Men\'s Jeans',
+                description: 'Classic baggy jeans for men to wear',
+                price: 'RM39.99',
+                image: 'images/men_jeans.jpeg',
+                category: 'men',
+                sizes: ['30', '32', '34', '36']
+            },
+            {
+                id: 'mens-hoodie',
+                name: 'Men\'s Hoodie',
+                description: 'Warm hoodie suitable for casual outings',
+                price: 'RM69.99',
+                image: 'images/men_hoodie.jpeg',
+                category: 'men',
+                sizes: ['S', 'M', 'L', 'XL']
+            },
+            {
+                id: 'mens-polo',
+                name: 'Men\'s Polo',
+                description: 'Classic polo shirt for men',
+                price: 'RM40.99',
+                image: 'images/men_polo.jpeg',
+                category: 'men',
+                sizes: ['S', 'M', 'L', 'XL']
+            },
+            {
+                id: 'women-dress',
+                name: 'Women\'s Dress',
+                description: 'Elegant summer dress for women',
+                price: 'RM29.99',
+                image: 'images/women_dress.jpeg',
+                category: 'women',
+                sizes: ['XS', 'S', 'M', 'L']
+            },
+            {
+                id: 'women-blouse',
+                name: 'Women\'s Blouse',
+                description: 'Casual blouse perfect for everyday style',
+                price: 'RM24.99',
+                image: 'images/women_blouse.jpeg',
+                category: 'women',
+                sizes: ['XS', 'S', 'M', 'L']
+            },
+            {
+                id: 'women-skirt',
+                name: 'Women\'s Skirt',
+                description: 'Stylish skirt suitable for casual wear',
+                price: 'RM45.99',
+                image: 'images/women_skirt.jpeg',
+                category: 'women',
+                sizes: ['XS', 'S', 'M', 'L']
+            },
+            {
+                id: 'women-cardigan',
+                name: 'Women\'s Cardigan',
+                description: 'Cozy cardigan for women',
+                price: 'RM27.99',
+                image: 'images/women_cardigen.jpeg',
+                category: 'women',
+                sizes: ['XS', 'S', 'M', 'L']
+            },
+            {
+                id: 'kids-tshirt',
+                name: 'Kids\' T-Shirt',
+                description: 'Soft cotton t-shirt for kids',
+                price: 'RM14.99',
+                image: 'images/kids_tshirt.jpeg',
+                category: 'kids',
+                sizes: ['S', 'M', 'L']
+            },
+            {
+                id: 'kids-pants',
+                name: 'Kids\' Pants',
+                description: 'Comfortable shorts for active kids',
+                price: 'RM19.99',
+                image: 'images/kids_shorts.jpeg',
+                category: 'kids',
+                sizes: ['S', 'M', 'L']
+            },
+            {
+                id: 'kids-hoodie',
+                name: 'Kids\' Hoodie',
+                description: 'Warm hoodie for kids',
+                price: 'RM30.99',
+                image: 'images/kids_hoodie.jpeg',
+                category: 'kids',
+                sizes: ['S', 'M', 'L']
+            },
+            {
+                id: 'kids-dress',
+                name: 'Kids\' Dress',
+                description: 'Cute dress for kids',
+                price: 'RM25.99',
+                image: 'images/kids_dress.jpeg',
+                category: 'kids',
+                sizes: ['S', 'M', 'L']
+            }
+        ];
+
+        // Get query from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query') ? urlParams.get('query').toLowerCase() : '';
+
+        // Filter products
+        const results = products.filter(product =>
+            product.name.toLowerCase().includes(query) ||
+            product.description.toLowerCase().includes(query)
+        );
+
+        // Display results
+        const resultsDiv = document.getElementById('results');
+        if (results.length > 0) {
+            let html = '<div class="product-grid">';
+            results.forEach(product => {
+                html += `
+                    <div class="product">
+                        <a href="${product.id}.html"><img src="${product.image}" alt="${product.name}"></a>
+                        <a href="${product.id}.html"><h3>${product.name}</h3></a>
+                        <p>${product.description}</p>
+                        <p>Price: ${product.price}</p>
+                        <label for="size-${product.id}">Size:</label>
+                        <select id="size-${product.id}">
+                            ${product.sizes.map(size => `<option value="${size}">${size}</option>`).join('')}
+                        </select>
+                        <button>Add to Cart</button>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        } else {
+            resultsDiv.innerHTML = '<p class="no-results">No results found for "' + query + '". Try a different search term.</p>';
+        }
+    </script>
+</body>
+</html>
